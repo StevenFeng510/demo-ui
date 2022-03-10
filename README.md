@@ -1,24 +1,16 @@
-# onestar-ui
+# onestar-ui 组件说明
 
-## Project setup
-```
-yarn install
-```
+## 1. 常见组件的封装
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### 1.1 button 组件
 
-### Compiles and minifies for production
-```
-yarn build
-```
+参数支持:
 
-### Lints and fixes files
-```
-yarn lint
-```
+| 参数名 |                   参数描述                   | 参数类型 | 默认值  |
+| :----: | :------------------------------------------: | :------: | :-----: |
+|  type  | 按钮类型(primary/sucess/warning/danger/info) |  string  | default |
+| plain  |                是否是朴素按钮                | boolean  |  false  |
+| round  |                是否是圆角按钮                | boolean  |  false  |
+| circle |                是否是圆形按钮                | boolean  |  false  |
+|  icon  |                   图标类名                   |  string  |   无    |
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
