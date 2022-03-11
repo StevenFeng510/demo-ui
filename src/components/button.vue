@@ -7,10 +7,14 @@
                 'is-circle': circle,
                 'is-round': round,
                 'is-plain': plain,
+                'is-disabled': disabled,
             },
         ]"
+        :disabled="disabled"
+        @click="handleClick"
     >
-        <span><slot></slot></span>
+        <i v-if="icon" :class="icon"></i>
+        <span v-if="$slots.default"><slot></slot></span>
     </button>
 </template>
 
@@ -35,9 +39,19 @@ export default {
             type: Boolean,
             default: false,
         },
+        icon: {
+            type: String,
+            default: '',
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
     },
-    created() {
-        console.log(this.type);
+    methods: {
+        handleClick(e) {
+            this.$emit('click', e);
+        },
     },
 };
 </script>
@@ -216,6 +230,16 @@ export default {
 // 圆形样式
 .os-button.is-circle {
     border-radius: 50%;
-    padding: 12px;
+    padding: 10px;
+}
+
+.os-button [class*='os-icon-'] + span {
+    margin-left: 5px;
+}
+
+.os-button.is-disabled {
+    transition: 999999s;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 </style>
