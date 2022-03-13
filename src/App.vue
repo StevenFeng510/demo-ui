@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="row">
+        <!-- <div class="row">
             <os-button @click="fn">按钮</os-button>
             <os-button type="primary">按钮</os-button>
             <os-button type="success">按钮</os-button>
@@ -51,7 +51,14 @@
             <os-button circle icon="os-icon-delete" plain type="info"></os-button>
             <os-button circle icon="os-icon-delete" plain type="warning"></os-button>
             <os-button circle icon="os-icon-delete" plain type="danger"></os-button>
-        </div>
+        </div> -->
+
+        <os-dialog title="温馨提示"></os-dialog>
+
+        <!-- <os-dialog>
+            <template v-slot:title>
+            </template>
+        </os-dialog> -->
     </div>
 </template>
 
