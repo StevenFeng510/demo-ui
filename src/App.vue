@@ -53,7 +53,22 @@
             <os-button circle icon="os-icon-delete" plain type="danger"></os-button>
         </div> -->
 
-        <os-dialog title="温馨提示"></os-dialog>
+        <!-- sync 修饰符是一个语法糖 -->
+        <os-button type="primary" @click="visible = true">按钮</os-button>
+
+        <!-- .sync修饰符 可以省略 注册子组件传过来的方法  -->
+        <os-dialog title="温馨提示" width="60%" top="100px" :visible.sync="visible">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+
+            <template v-slot:footer>
+                <os-button type="primary" @click="visible = false">确定</os-button>
+                <os-button @click="visible = false">取消</os-button>
+            </template>
+        </os-dialog>
 
         <!-- <os-dialog>
             <template v-slot:title>
@@ -65,9 +80,17 @@
 <script>
 export default {
     name: 'App',
+    data() {
+        return {
+            visible: false,
+        };
+    },
     methods: {
         fn() {
             console.log(123);
+        },
+        close(value) {
+            this.visible = value;
         },
     },
 };
