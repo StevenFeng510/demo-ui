@@ -34,3 +34,27 @@
 | close  | 模态框关闭的事件 |
 
 #### 2.2 插槽说明
+
+
+
+### 3.Input组件
+
+参数支持:
+
+|    参数名     |         参数描述          | 参数类型 | 默认值 |
+| :-----------: | :-----------------------: | :------: | :----: |
+|  placeholder  |          占位符           |  string  |   无   |
+|     type      | 文本类型(text/password..) |  string  |  text  |
+|   disabled    |           禁用            | boolean  | false  |
+|   clearable   |     是否显示清空按钮      | boolean  | false  |
+| show-password |   是否显示密码切换按钮    | boolean  | false  |
+|     name      |         name属性          |  string  |   无   |
+
+#### 3.1 时间支持
+
+| 事件描述 |    事件名称    |
+| :------: | :------------: |
+|   blur   |  失去焦点事件  |
+|  change  |  内容改变事件  |
+|  focus   | 获取的焦点事件 |
+

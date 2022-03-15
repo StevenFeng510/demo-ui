@@ -55,7 +55,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // scoped会给当前组件的模版中的所有的元素都添加一个随机的属性
 // 给当前的组件中所有的样式也添加一个对应的属性选择器
 .os-dialog__wrapper {
@@ -112,7 +112,9 @@ export default {
             padding: 10px 20px 20px;
             text-align: right;
             box-sizing: border-box;
-            .os-button:first-child {
+            // 深度选择器 scss ::v-deep  less /deep/  css >>>
+            // 想让选择的作用程度更深
+            ::v-deep .os-button:first-child {
                 margin-right: 20px;
             }
         }
