@@ -1,8 +1,14 @@
 <template>
-    <label class="os-checkbox" :class="{ 'is-checked': model }">
+    <label class="os-checkbox" :class="{ 'is-checked': isChecked }">
         <span class="os-checkbox__input">
             <span class="os-checkbox__inner"></span>
-            <input type="checkbox" class="os-checkbox__original" :name="name" v-model="model" />
+            <input
+                type="checkbox"
+                class="os-checkbox__original"
+                :value="label"
+                :name="name"
+                v-model="model"
+            />
         </span>
         <span class="os-checkbox__label">
             <slot></slot>
@@ -16,14 +22,29 @@
 <script>
 export default {
     name: 'OsCheckbox',
+    inject: {
+        CheckboxGroup: {
+            default: '',
+        },
+    },
     computed: {
         model: {
             get() {
-                return this.value;
+                return this.isGroup ? this.CheckboxGroup.value : this.value;
             },
             set(value) {
-                this.$emit('input', value);
+                this.isGroup
+                    ? this.CheckboxGroup.$emit('input', value)
+                    : this.$emit('input', value);
             },
+        },
+        isGroup() {
+            return !!this.CheckboxGroup;
+        },
+        isChecked() {
+            // 如果是group包裹, 判断label是否在model中
+            // 如果没有group包裹, 直接使用model
+            return this.isGroup ? this.model.includes(this.label) : this.model;
         },
     },
     props: {

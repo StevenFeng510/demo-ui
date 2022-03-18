@@ -32,13 +32,24 @@
             <os-radio label="5">女</os-radio>
         </os-radio-group> -->
 
-        <os-checkbox v-model="active">是否选中</os-checkbox>
+        <!-- <os-checkbox v-model="active">是否选中</os-checkbox>
 
         <os-checkbox-group v-model="hobby">
             <os-checkbox label="抽烟"></os-checkbox>
             <os-checkbox label="喝酒"></os-checkbox>
             <os-checkbox label="烫头"></os-checkbox>
         </os-checkbox-group>
+
+        <br /> -->
+
+        <os-form :model="model">
+            <os-form-item label="用户名" label-width="100px">
+                <os-input placeholder="请输入用户名" v-model="model.username"></os-input>
+            </os-form-item>
+            <os-form-item label="选择">
+                <os-switch v-model="model.active"></os-switch>
+            </os-form-item>
+        </os-form>
     </div>
 </template>
 
@@ -47,8 +58,12 @@ export default {
     name: 'App',
     data() {
         return {
-            active: false,
-            hobby: ['抽烟', '喝酒', '烫头'],
+            // active: false,
+            // hobby: ['抽烟'],
+            model: {
+                username: '',
+                active: true,
+            },
         };
     },
 };
