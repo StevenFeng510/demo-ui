@@ -1,5 +1,5 @@
 <template>
-    <label class="os-radio" :class="{ 'is-checked': label === value }">
+    <label class="os-radio" :class="{ 'is-checked': label === model }">
         <span class="os-radio__input">
             <span class="os-radio__inner"></span>
             <input
@@ -25,6 +25,11 @@
 <script>
 export default {
     name: 'OsRadio',
+    inject: {
+        RadioGroup: {
+            default: '',
+        },
+    },
     props: {
         label: {
             type: [String, Number, Boolean],
@@ -39,12 +44,18 @@ export default {
     computed: {
         model: {
             get() {
-                return this.value;
+                // 还要从this.RadioGroup.value中拿值
+                return this.isGroup ? this.RadioGroup.value : this.value;
             },
             set(value) {
                 //  触发父组件给当前组件注册的input事件
-                this.$emit('input', value);
+                this.isGroup ? this.RadioGroup.$emit('input', value) : this.$emit('input', value);
             },
+        },
+        isGroup() {
+            // 用于判断radio是否被radioGroup所包裹
+            // !! 变为布尔值
+            return !!this.RadioGroup;
         },
     },
 };
@@ -82,19 +93,20 @@ export default {
             cursor: pointer;
             display: inline-block;
             box-sizing: border-box;
+            &:after {
+                width: 4px;
+                height: 4px;
+                border-radius: 100%;
+                background-color: #fff;
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                transition: transfrom 0.15s ease-in;
+            }
         }
-        &:after {
-            width: 4px;
-            height: 4px;
-            border-radius: 100%;
-            background-color: #fff;
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transfrom 0.15s ease-in;
-        }
+
         .os-radio__original {
             opacity: 0;
             outline: none;
