@@ -1,8 +1,8 @@
 <template>
     <div class="os-form-item">
-        <label class="os-form-item__label" :style="{ width: this.Form.labelWidth }">{{
-            label
-        }}</label>
+        <label class="os-form-item__label" :style="{ width: this.Form.labelWidth }">
+            {{ label }}
+        </label>
         <div class="os-form-item__content">
             <slot></slot>
         </div>
