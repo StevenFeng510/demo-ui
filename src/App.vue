@@ -41,7 +41,7 @@
         </os-checkbox-group>
 
         <br /> -->
-
+        <!-- form表单 -->
         <os-form :model="model">
             <os-form-item label="用户名" label-width="100px">
                 <os-input placeholder="请输入用户名" v-model="model.username"></os-input>
