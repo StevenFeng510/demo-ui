@@ -83,7 +83,7 @@ export default {
             .os-dialog__title {
                 line-height: 24px;
                 font-size: 18px;
-                color: #303133;
+                color: #303134;
             }
             .os-dialog__headerbtn {
                 position: absolute;

@@ -84,7 +84,7 @@ export default {
     &:hover,
     &:focus {
         background: #3498db;
-        border-color: #3199df;
+        border-color: #3498db;
         color: #fff;
     }
 }
